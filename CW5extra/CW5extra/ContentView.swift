@@ -25,8 +25,12 @@ struct ContentView: View {
                     .padding()
                 Text("ادخل الطول والوزن")
                     .font(.system(size: 30)).padding()
-                TextField("الطول", text: $height).padding()
-                TextField("الوزن", text: $weight).padding()
+                TextField("الطول", text: $height)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                TextField("الوزن", text: $weight)
+                    .multilineTextAlignment(.center)
+                    .padding()
                 Button("احسب") {
                     
                     bmi = "BMI = \(calculateBmi(height: Double(height) ??  0.0, weight: Double(weight) ?? 0.0 ))"
@@ -37,11 +41,16 @@ struct ContentView: View {
                     } else {
                         status = "سمين"
                     }
-                }.frame(width: 100, height: 50)
-                    .background(Color.yellow)
+                }.frame(width: 200, height: 50)
+                    .background(Color.gray)
+                    .foregroundColor(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 40))
-                Text(bmi).padding()
-                Text(status).padding()
+                Text(bmi)
+                    .font(.system(size: 30))
+                    .padding()
+                Text(status)
+                    .font(.system(size: 30))
+                    .padding()
 
 
             }
