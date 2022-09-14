@@ -23,13 +23,23 @@ struct ContentView: View {
                     .resizable()
                     .frame(width: 200, height: 200)
                     .padding()
-                Text("ادخل الطول والوزن").padding()
+                Text("ادخل الطول والوزن")
+                    .font(.system(size: 30)).padding()
                 TextField("الطول", text: $height).padding()
                 TextField("الوزن", text: $weight).padding()
                 Button("احسب") {
                     
                     bmi = "BMI = \(calculateBmi(height: Double(height) ??  0.0, weight: Double(weight) ?? 0.0 ))"
-                }
+                    if calculateBmi(height: Double(height) ??  0.0, weight: Double(weight) ?? 0.0 ) <= 20 {
+                        status = "ضعيف"
+                    } else if calculateBmi(height: Double(height) ??  0.0, weight: Double(weight) ?? 0.0 ) <= 25{
+                        status = "جيد"
+                    } else {
+                        status = "سمين"
+                    }
+                }.frame(width: 100, height: 50)
+                    .background(Color.yellow)
+                    .clipShape(RoundedRectangle(cornerRadius: 40))
                 Text(bmi).padding()
                 Text(status).padding()
 
